@@ -60,7 +60,6 @@ zstyle ':completion:*' insert-tab pending
 # tab completion # -u avoid unnecessary security check.
 autoload -U compinit && compinit -u
 autoload -U bashcompinit && bashcompinit
-source /usr/share/git/completion/git-completion.bash
 
 # Completion is done from both ends.
 setopt complete_in_word
@@ -103,7 +102,6 @@ setopt hist_expire_dups_first
 setopt hist_find_no_dups
 setopt hist_ignore_dups
 setopt hist_ignore_space
-setopt hist_lex_words
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt inc_append_history
