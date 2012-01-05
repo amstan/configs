@@ -17,68 +17,28 @@ stty -ctlecho
 # Enable colors
 autoload -U colors && colors
 
-# Turn caching on
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+autoload -U compinit \
+    edit-command-line
+compinit
+zmodload zsh/complist
 
-# allow me to use arrow keys to select items.
+eval $(dircolors -b)
+
+# menu completion
 zstyle ':completion:*' menu select
-# case-insensitive completion. Partial-word and then substring completion commented out
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # \
-     # 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# don't complete the same filenames again
-zstyle ':completion:*:(rm|cp|mv|zmv|vim|git):*' ignore-line other
+# colors for file completion
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-zstyle ':completion:*:*:*' ignore-parents parent pwd
+# complete all processes
+zstyle ':completion:*:processes' command 'ps -e'
+zstyle ':completion:*:processes-names' command 'ps -eo comm'
 
-# fuzzy matching of completions
-zstyle ':completion:*' completer _complete _match _approximate
-# zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
+# cache completion
+zstyle ':completion:*' use-cache on
 
-# Stop trying to complete things in the path which already match!
-zstyle ':completion:*' accept-exact-dirs true
-
-# tab through previous directories automatically
-zstyle ':completion::complete:cd::directory-stack' menu yes select
-# tab through fg process automatically
-zstyle ':completion::complete:fg:*:*' menu yes select
-
-# stop when reaching beginning/end of history (further attempts then wrap)
-zstyle ':completion:*:history-words' stop yes
-# remove all duplicate words
-zstyle ':completion:*:history-words' remove-all-dups yes
-# don't list all the options (will often get the "too many options" prompt)
-zstyle ':completion:history-words:*' list no
-# we want the options to be filled in immediatly.
-zstyle ':completion:*:history-words' menu yes
-
-# This stops completion if we paste text into the terminal which has tabs.
-zstyle ':completion:*' insert-tab pending
-
-# tab completion # -u avoid unnecessary security check.
-autoload -U compinit && compinit -u
-autoload -U bashcompinit && bashcompinit
-
-# Completion is done from both ends.
-setopt complete_in_word
-# Show the type of each file with a trailing identifying mark.
-setopt list_types
-# if there are other completions, always show them
-unsetopt rec_exact
-# don't expand glob automatically when completing.
-setopt glob_complete
-# case insensitive globbing
-setopt no_case_glob
-# don't print an error when there are no glob matches
-setopt no_nomatch
-# More globbing stuff.
-setopt extended_glob
-# Allow for correction of inaccurate commands
-setopt correct
-# Don't offer values starting with _ as corrections.
-CORRECT_IGNORE='_*'
+# don't complete working directory in parent
+zstyle ':completion:*' ignore-parents parent pwd
 
 # Other global aliases
 alias -g C='| wc -l'
