@@ -65,6 +65,7 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt inc_append_history
+alias -g history="history 1"
 
 # Show dots when the command line is completing so that
 # we have some visual indication of when the shell is busy.
