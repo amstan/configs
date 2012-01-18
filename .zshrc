@@ -195,8 +195,8 @@ TIMEFMT="$fg[cyan]%E real  %U user  %S system  %P cpu  %MkB mem $reset_color$ %J
 export PYTHONSTARTUP="$HOME/.pystartup"
 
 # editor setup
-export EDITOR=vim
-export VISUAL=kate
+export EDITOR=nano
+export VISUAL=nano
 
 alias e=echo
 alias g=git
