@@ -236,9 +236,9 @@ precmd () {
  
     vcs_info
 }
- 
+
 setopt prompt_subst
 
-#PROMPT='%F{blue}%n@%m %c${vcs_info_msg_0_}%F{blue} %(?/%F{blue}/%F{red})%% %{$reset_color%}'
-
 PROMPT='%{%B$fg[blue]%}%n@%m%{$reset_color%b%}:%{$fg[cyan]%}%~%{$reset_color%}${vcs_info_msg_0_}%#%\ '
+
+archey
