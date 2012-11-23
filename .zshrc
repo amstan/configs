@@ -47,8 +47,8 @@ alias -g V='| vimless'
 alias -g NO="&> /dev/null"
 alias -g NE="2> /dev/null"
 alias -g NS="> /dev/null"
-alias -g G='| egrep --color=always'
-alias -g GI='| egrep -i --color=always'
+alias -g G='| egrep --color=auto'
+alias -g GI='| egrep -i --color=auto'
 alias -g H='| head'
 
 # history
@@ -205,11 +205,11 @@ alias du="du -hc --max-depth=1"
 alias dus="command du -hs"
 
 # colorize search results for grep
-alias zgr="zgrep -e --color=always"
-alias zgi="zgrep -ei --color=always"
-alias grep="egrep --color=always"
+alias zgr="zgrep -e --color=auto"
+alias zgi="zgrep -ei --color=auto"
+alias grep="egrep --color=auto"
 alias gr="grep"
-alias gi="egrep -i --color=always"
+alias gi="egrep -i --color=auto"
 gh() { gi "$@" "$HISTFILE" }
 
 # Grep all files in the current directory recursively
@@ -240,5 +240,3 @@ precmd () {
 setopt prompt_subst
 
 PROMPT='%{%B$fg[blue]%}%n@%m%{$reset_color%b%}:%{$fg[cyan]%}%~%{$reset_color%}${vcs_info_msg_0_}%#%\ '
-
-archey
