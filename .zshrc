@@ -155,10 +155,6 @@ TIMEFMT="$fg[cyan]%E real  %U user  %S system  %P cpu  %MkB mem $reset_color$ %J
 # config for python interactive shell
 export PYTHONSTARTUP="$HOME/.pystartup"
 
-# editor setup
-export EDITOR=nano
-export VISUAL=nano
-
 alias e=echo
 alias g=git
 alias p=python2.7
@@ -222,8 +218,8 @@ g.() {
 
 autoload -Uz vcs_info
  
-zstyle ':vcs_info:*' stagedstr '%F{green}·'
-zstyle ':vcs_info:*' unstagedstr '%F{red}·'
+zstyle ':vcs_info:*' stagedstr '%F{green}*'
+zstyle ':vcs_info:*' unstagedstr '%F{red}*'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
 zstyle ':vcs_info:*' enable git svn
@@ -231,7 +227,7 @@ precmd () {
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
         zstyle ':vcs_info:*' formats ' (%F{yellow}%b%c%u%F{default})'
     } else {
-        zstyle ':vcs_info:*' formats ' (%F{yellow}%b%c%u%B%F{green}·%%b%F{default})'
+        zstyle ':vcs_info:*' formats ' (%F{yellow}%b%c%u%B%F{green}*%%b%F{default})'
     }
  
     vcs_info
@@ -239,4 +235,6 @@ precmd () {
 
 setopt prompt_subst
 
-PROMPT='%{%B$fg[blue]%}%n@%m%{$reset_color%b%}:%{$fg[cyan]%}%~%{$reset_color%}${vcs_info_msg_0_}%#%\ '
+PROMPT='%{%B$fg[blue]%}%n@%m%{$reset_color%b%}:%{$fg[cyan]%}%~%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}%#%\ '
+
+zstyle ':completion:*' users ignored-patterns '*'
