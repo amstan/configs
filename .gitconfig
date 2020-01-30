@@ -3,3 +3,9 @@
 	email = alex@hypertriangle.com
 [push]
 	default = simple
+[core]
+	excludesfile = ~/.gitignore
+[diff]
+	tool = kompare
+[color]
+	ui = auto
