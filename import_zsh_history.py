@@ -24,4 +24,4 @@ for line in history_lines:
     command = command.replace(r'\\n', '\n')
     hist.append({'inp': command, 'rtn': 0, 'ts': (timestamp, timestamp)})
 hist.flush()
-print(hist.info().filename)
+print(hist.info()["filename"])
