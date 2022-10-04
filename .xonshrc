@@ -2,3 +2,4 @@ $XONSH_COLOR_STYLE="default"
 $PROMPT = "{env_name}{BOLD_BLUE}{user}@{hostname}{CYAN} {cwd}{branch_color}{curr_branch: {}}{RESET} {BOLD_BLUE}{prompt_end}{RESET} "
 $XONSH_HISTORY_SIZE = "1GB"
 $XONSH_SHOW_TRACEBACK = False # Silence inane warning
+$COMMANDS_CACHE_SIZE_WARNING = False # I have a lot of executables apparently, I don't care if it makes xonsh slow to startup
