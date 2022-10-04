@@ -53,8 +53,8 @@ alias -g H='| head'
 
 # history
 export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=100000
-export SAVEHIST=10000
+export HISTSIZE=10000000
+export SAVEHIST=1000000
 setopt append_history
 setopt bang_hist
 setopt extended_history
