@@ -5,7 +5,9 @@
 	default = simple
 [core]
 	excludesfile = ~/.gitignore
+[advice]
+	detachedHead = false
 [diff]
-	tool = kompare
+	tool = kdiff3
 [color]
 	ui = auto
