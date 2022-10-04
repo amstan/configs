@@ -1,3 +1,4 @@
 $XONSH_COLOR_STYLE="default"
-$PROMPT = "{env_name}{BOLD_BLUE}{user}@{hostname}{CYAN} {cwd}{branch_color}{curr_branch: {}}{NO_COLOR} {BOLD_BLUE}{prompt_end}{NO_COLOR} "
+$PROMPT = "{env_name}{BOLD_BLUE}{user}@{hostname}{CYAN} {cwd}{branch_color}{curr_branch: {}}{RESET} {BOLD_BLUE}{prompt_end}{RESET} "
 $XONSH_HISTORY_SIZE = "1GB"
+$XONSH_SHOW_TRACEBACK = False # Silence inane warning
