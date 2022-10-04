@@ -121,14 +121,6 @@ eval $(dircolors -b)
 # Comandline completion has colors
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 alias ls="ls --color=tty -hF"
-alias ll="ls -l"
-alias lt="ll -t"
-alias la="ls -A"
-alias lla="ll -A"
-l.()  { ls  -d "$@" .* ; }
-lth() { lla -t "$@" | head ; }
-# TODO: allow lsd to take directory argument.
-lsd() { command ls --color=tty -hd "$@" */ }
 
 # allow comments in the shell
 setopt interactive_comments
@@ -155,10 +147,6 @@ TIMEFMT="$fg[cyan]%E real  %U user  %S system  %P cpu  %MkB mem $reset_color$ %J
 # config for python interactive shell
 export PYTHONSTARTUP="$HOME/.pystartup"
 
-alias e=echo
-alias g=git
-alias p=python2.7
-
 # This is mostly used to color man pages.
 export LESS_TERMCAP_mb=$(tput setaf 3) # yellow
 export LESS_TERMCAP_md=$(tput bold; tput setaf 1) # red
@@ -168,53 +156,11 @@ export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2) # green
 export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
 
-# Handy Extract Program.
-extract()
-{
-     if [[ -f $1 ]] ; then
-         case "$1" in
-             *.tar.bz2)   tar xvjf "$1"     ;;
-             *.tar.gz)    tar xvzf "$1"     ;;
-             *.bz2)       bunzip2 "$1"      ;;
-             *.rar)       7za x "$1"        ;;
-             *.gz)        gunzip "$1"       ;;
-             *.tar)       tar xvf "$1"      ;;
-             *.tbz2)      tar xvjf "$1"     ;;
-             *.tgz)       tar xvzf "$1"     ;;
-             *.zip)       unzip "$1"        ;;
-             *.Z)         uncompress "$1"   ;;
-             *.7z)        7za x "$1"         ;;
-             *)           echo "'$1' cannot be extracted via >extract<" 1>&2 ;;
-         esac
-     else
-         echo "'$1' is not a valid file" 1>&2
-     fi
-}
-zstyle ':completion:*:*:extract:*' file-patterns \
-    '*.(tar|bz2|rar|gz|tbz2|tgz|zip|Z|7z):zip\ files *(-/):directories'
-
 # open man page as a PDF in preview
 pman() { command man -t "$@" | okular -; }
 compdef _man pman
 
 alias du="du -hc --max-depth=1"
-alias dus="command du -hs"
-
-# colorize search results for grep
-alias zgr="zgrep -e --color=auto"
-alias zgi="zgrep -ei --color=auto"
-alias grep="egrep --color=auto"
-alias gr="grep"
-alias gi="egrep -i --color=auto"
-gh() { gi "$@" "$HISTFILE" }
-
-# Grep all files in the current directory recursively
-#   ignoring any files and folders that start with a .
-g.() {
-    find . -name '.?*' -prune -o -exec egrep --color=always -H "$@" {} \; 2> /dev/null
-}
-
-
 
 autoload -Uz vcs_info
  
